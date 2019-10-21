@@ -1,0 +1,101 @@
+#include "testList.h"
+#include <stdio.h>
+
+
+struct Node
+{
+    int Element;
+    Position Next;
+};
+
+
+// 测试一个表是否是空表
+int IsEmpty(List L)
+{
+    return L->Next == NULL;
+}
+
+
+int IsLast(Position P, List L)
+{
+    return P->Next == NULL;
+}
+
+Position Find(int X, List L)
+{
+    Position P;
+
+    P = L->Next;
+    while (P != NULL && P->Element != X)
+    {
+        P = P->Next;
+    }
+    return P;
+}
+
+void Delete(int X, List L)
+{
+    Position P, TmpCell;
+    P = FindPrevious(X, L);
+    if (!IsLast(P, L))
+    {
+        TmpCell = P->Next;
+        P->Next = TmpCell->Next;
+        free(TmpCell);
+    }
+}
+
+Position FindPrevious(int X, List L)
+{
+    Position P;
+    
+    P = L;
+    while (P->Next != NULL && P->Next->Element != X)
+    {
+        P = P->Next;
+    }
+    
+    return P;
+}
+
+void Insert(int X, List L, Position P)
+{
+    Position TmpCell;
+    TmpCell = malloc(sizeof(struct Node));
+    if (TmpCell == NULL)
+    {
+        FataError("Out of space!!!");
+    }
+    TmpCell->Element = X;
+    TmpCell->Next = P->Next;
+    P->Next = TmpCell;
+}
+
+void DeleteList(List L)
+{
+    Position P, TmpPosi;
+
+    P = L->Next;
+    L->Next = NULL;
+    while (P != NULL)
+    {   
+        TmpPosi = P->Next;
+        free(P);
+        P = TmpPosi;
+    }
+}
+
+Position Header(List L)  // 返回链表头，即一个哑结点
+{
+    return L;
+}
+
+Position First(List L)
+{
+    return L->Next;
+}
+
+Position Advance(Position P)
+{
+  
+}
