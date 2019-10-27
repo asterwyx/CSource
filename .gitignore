@@ -1,3 +1,5 @@
 # binary/compiled files
 *.out
 *.exe
+
+.vscode/
