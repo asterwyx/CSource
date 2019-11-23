@@ -1,22 +1,16 @@
-#include<stdio.h>
+#include <stdio.h>
 int pow(int x, int n)
 {
-    int res = 1;
     if (0 == n)
     {
-        return (1);
+        return 1;
     }
-    for (; n >= 0; n / 3)
-    {
-        if (n % 3 == 1)
-        {
-            res *= x;
+    int result = 1;
+    for (; n > 0; n = n >> 1) {
+        if (n % 2 == 1) {
+            result *= x;
         }
-        else if (n % 3 == 2)
-        {
-            res *= x * x;
-        }
-        x = x * x * x;
+        x *= x;
     }
-    return res;
+    return result;
 }
