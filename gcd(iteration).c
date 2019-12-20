@@ -13,7 +13,11 @@ int gcd(int m, int n)
     return counter;
 }
 
+// 测试主程序
 int main()
 {
-    
+    int result;
+    result = gcd(21, 13);
+    printf("%d\n", result);
+    return 0;
 }

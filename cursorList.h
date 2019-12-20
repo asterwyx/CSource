@@ -1,28 +1,14 @@
-#ifndef _cursorList_H
-#define _cursorList_H
-#define MAX_SPACE 50
+#ifndef cursorList__h
+#define cursorList__h
+#define MAX_SPACE 1024
+#define YES 1
+#define NO 0
+#define ERROR -1
+#define null ERROR
 
 typedef int PtrToNode;
 typedef PtrToNode Position;
 typedef PtrToNode List;
-
-void InitializaCursorSpace(void);
-
-List MakeEmpty(List L);
-int IsEmpty(const List L);
-int IsLast(const List L, const Position P);
-Position Find(int X, const List L);
-void Delete(int X, List L);
-Position FindPrevious(int X, const List L);
-void Insert(List L, int X, Position P);
-void DeleteList(List L);
-Position Header(const List L);
-Position First(const List L);
-Position Advance(const Position P);
-int Retrieve(const Position P);
-
-
-#endif
 
 typedef struct node
 {
@@ -30,4 +16,24 @@ typedef struct node
     Position next; 
 } Node;
 
-Node cursorSpace[MAX_SPACE];
+extern void InitializaCursorSpace(void);
+extern List CreateEmptyList(void);
+extern int IsEmpty(const List L);
+extern Position GetFirst(const List L);
+extern int GetLast(const List L);
+extern int HasOnlyOne(List L);
+extern List MakeEmpty(List L);
+
+
+extern Position Find(const List L, int element);
+extern void Delete(List L, int element);
+extern Position FindPrevious(const List L, int element);
+extern void Insert(List L, Position P, int element);
+extern void DeleteList(List L);
+extern Position Header(const List L);
+
+extern Position Advance(const Position P);
+extern int Retrieve(const Position P);
+
+
+#endif  /* _cursorList_H */
