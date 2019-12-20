@@ -3,25 +3,27 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "AVL.h"
 
-typedef struct node{
-    int element;
-    struct node *previous;
-    struct node *next;
+typedef struct node {
+	Position element;
+	struct node* previous;
+	struct node* next;
 } Node;
 
-typedef struct queue{
-    Node *front;
-    Node *rear;
-    int num;
+typedef struct queue {
+	Node* front;
+	Node* rear;
+	int num;
 } Queue;
 
 
-void Init(Queue *q);
+void Init(Queue* q);
 
-void Enqueue(int e, Queue *q);
+void Enqueue(Position e, Queue* q);
 
-int Dequeue(Queue *q);
+Position Dequeue(Queue* q);
 
+int IsEmpty(Queue* q);
 
 #endif

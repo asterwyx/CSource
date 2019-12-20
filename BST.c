@@ -13,14 +13,23 @@ int FindBSTMax(SearchTree T)
 
 SearchTree insert (int x, SearchTree T)
 {
-    while (T != NULL)
+    if (T != NULL)
     {
-        if (x < T)
+        if (x < T->value)
         {
-            /* code */
+	    T->leftChild = insert(x, T->leftChild);
         }
-        
+        else
+	{
+	    T->rightChild = insert(x, T->rightChild);
+        }
     }
-    
-    
+    else
+    {
+        T = (SearchTree)malloc(sizeof(TreeNode));    
+	T->leftChild = NULL;
+	T->rightChild = NULL;
+	T->value = x;
+    }
+    return T;
 } 
