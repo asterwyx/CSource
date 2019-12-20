@@ -1,12 +1,10 @@
 #include "AVL.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
-#include "queue.h"
 
 #define MAX(a, b) (a) > (b) ? a : b
 
-Position rotateWithleft(Position k1)
+Position rotateWithLeft(Position k1)
 {
     Position k2 = k1->left;
     k1->left = k2->right;
@@ -16,7 +14,7 @@ Position rotateWithleft(Position k1)
     return k2;
 }
 
-Position rotateWithright(Position k1)
+Position rotateWithRight(Position k1)
 {
     Position k2 = k1->right;
     k1->right = k2->left;
@@ -26,16 +24,16 @@ Position rotateWithright(Position k1)
     return k2;
 }
 
-Position doubleRotateWithleft(Position k1)
+Position doubleRotateWithLeft(Position k1)
 {
-    k1->left = rotateWithright(k1->left);
-    return rotateWithleft(k1);
+    k1->left = rotateWithRight(k1->left);
+    return rotateWithLeft(k1);
 }
 
-Position doubleRotateWithright(Position k1)
+Position doubleRotateWithRight(Position k1)
 {
-    k1->right = rotateWithleft(k1->right);
-    return rotateWithright(k1);
+    k1->right = rotateWithLeft(k1->right);
+    return rotateWithRight(k1);
 }
 
 
@@ -43,6 +41,7 @@ AVLTree Insert(int x, AVLTree head)
 {
     if (head == NULL)
     {
+        // 真正的插入在这里发生
         head = (Position)malloc(sizeof(TreeNode));
         if (head == NULL)
         {
@@ -60,17 +59,18 @@ AVLTree Insert(int x, AVLTree head)
     }
     else if (x < head->value)
     {
+        // 连接在这里发生
         head->left = Insert(x, head->left);
         // 判断平衡是否被破坏以及怎么样被破坏，如果被破坏，调整平衡
         if ((Height(head->left) - Height(head->right)) > 1)
         {
             if (x < head->left->value)
             {
-                head = rotateWithleft(head);
+                head = rotateWithLeft(head);
             }
             else
             {
-                head = doubleRotateWithleft(head);
+                head = doubleRotateWithLeft(head);
             }
         }    
     }
@@ -82,26 +82,27 @@ AVLTree Insert(int x, AVLTree head)
         {
             if (x > head->right->value)
             {
-                head = rotateWithright(head);
+                head = rotateWithRight(head);
             }
             else
             {
-                head = doubleRotateWithright(head);
+                head = doubleRotateWithRight(head);
             }
         }
     }
+	head->height = MAX(Height(head->left), Height(head->right)) + 1;
     return head;
 }
 
-int Height(Position p)
+int Height(AVLTree head)
 {
-    if (p == NULL)
+    if (head == NULL)
     {
         return -1;
     }
     else
     {
-        return p->height;
+        return head->height;
     }
 }
 
@@ -140,24 +141,4 @@ void PostOrderTraverse(const AVLTree tree)
 	PostOrderTraverse(tree->left);
 	PostOrderTraverse(tree->right);
 	printf("%d ", tree->value);
-}
-
-void AVLTreeBFS(const AVLTree tree)
-{
-	Queue* q = (Queue*)malloc(sizeof(Queue));
-	Init(q);
-	Enqueue(tree, q);
-	while (!IsEmpty(q))
-	{
-		Position tmp = Dequeue(q);
-		printf("%d ", tmp->value);
-		if (tmp->left != NULL)
-		{
-			Enqueue(tmp->left, q);
-		}
-		if (tmp->right != NULL)
-		{
-			Enqueue(tmp->right, q);
-		}
-	}
 }

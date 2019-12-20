@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "AVL.h"
+typedef int element_t;
 
 typedef struct node {
-	Position element;
+	element_t element;
 	struct node* previous;
 	struct node* next;
 } Node;
@@ -20,9 +20,9 @@ typedef struct queue {
 
 void Init(Queue* q);
 
-void Enqueue(Position e, Queue* q);
+void Enqueue(element_t e, Queue* q);
 
-Position Dequeue(Queue* q);
+element_t Dequeue(Queue* q);
 
 int IsEmpty(Queue* q);
 

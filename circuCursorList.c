@@ -75,6 +75,17 @@ Position GetFirst(const List L)
     return cursorSpace[L].next;
 }
 
+// 返回循环链表中最后一个节点的位置
+Position GetLast(const List L)
+{
+	if (IsEmpty(L))
+	{
+		perror("Empty list");
+		return null;
+	}
+	return FindPrevious(L, cursorSpace[GetFirst(L)].element);
+}
+
 // 判断该循环链表是否只有一个节点
 int HasOnlyOne(const List L)
 {
@@ -264,4 +275,20 @@ Position Advance(const Position P)
 int Retrieve(const Position P)
 {
     return cursorSpace[P].element;
+}
+
+// 遍历打印链表
+void TraversePrint(const List L)
+{
+	if (IsEmpty(L))
+	{
+		return;
+	}
+	Position P = GetFirst(L);
+	while (Advance(P) != GetFirst(L))
+	{
+		printf("%d,", cursorSpace[P].element);
+		P = Advance(P);
+	}
+	printf("%d\n", cursorSpace[P].element);
 }

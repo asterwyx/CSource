@@ -11,12 +11,12 @@ void Init(Queue* q)
 	}
 	else
 	{
-		perror("Out of space��");
+		perror("Out of space!!");
 		exit(EXIT_FAILURE);
 	}
 }
 
-void Enqueue(Position e, Queue* q)
+void Enqueue(element_t e, Queue* q)
 {
 	Node* newNode = (Node*)malloc(sizeof(Node));
 	if (newNode != NULL)
@@ -37,13 +37,13 @@ void Enqueue(Position e, Queue* q)
 	}
 }
 
-Position Dequeue(Queue* q)
+element_t Dequeue(Queue* q)
 {
 	if (q->rear == q->front)
 	{
 		return 0;
 	}
-	Position result = q->rear->element;
+	element_t result = q->rear->element;
 	q->rear = q->rear->previous;
 	q->num--;
 	free(q->rear->next);

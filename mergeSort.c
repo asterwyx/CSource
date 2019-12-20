@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <process.h>
+
 #define MAX_SIZE 100
 void merge(int list[], int start1, int end1, int start2, int end2)
 {
@@ -59,19 +61,34 @@ void mergeSort(int list[], int start, int end)
         return ;
     }
     int mid = (start + end) / 2;
+    // 分的过程
     mergeSort(list, start, mid);
     mergeSort(list, mid + 1, end);
+    // 合的过程，在合的过程完成了治
     merge(list, start, mid, mid + 1, end);
 }
 
 int main()
 {
-    int testArray[10] = {45, 7, 97, 21, 554, 345, 32, 34, 65, 78};
-    mergeSort(testArray, 0, 9);
-    for (int i = 0; i < 10; i++)
+    int source[MAX_SIZE] = {0};
+    int number = 0;
+    printf("Please enter size, no greater than %d\n", MAX_SIZE);
+    scanf("%d", &number);
+    printf("Please enter the sequence\n");
+    for (int i = 0; i < number; ++i)
     {
-        printf("%d ", testArray[i]);
+        scanf("%d", source + i); // 输入序列
     }
+
+    // 开始排序
+    mergeSort(source, 0, number - 1);
+
+    printf("Result is:\n");
+    for (int i = 0; i < number; i++)
+    {
+        printf("%d, ", source[i]);
+    }
+    printf("\n");
     system("pause");
     return 0;
 }

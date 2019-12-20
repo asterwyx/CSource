@@ -10,39 +10,43 @@ typedef int PtrToNode;
 typedef PtrToNode Position;
 typedef PtrToNode List;
 
-// Á´±í½ÚµãÉùÃ÷
+// é“¾è¡¨èŠ‚ç‚¹å£°æ˜
 typedef struct node
 {
     int element;
     Position next; 
 } Node;
 
-// ³õÊ¼»¯Á´±í·ÖÅä¿Õ¼ä
+// åˆå§‹åŒ–é“¾è¡¨åˆ†é…ç©ºé—´
 extern void InitializeCursorSpace(void);
-// ´´½¨¿Õ±í
+// åˆ›å»ºç©ºè¡¨
 extern List CreateEmptyList(void);
-// ÅĞ¶ÏÊÇ·ñÊÇ¿Õ±í
+// åˆ¤æ–­æ˜¯å¦æ˜¯ç©ºè¡¨
 extern int IsEmpty(const List L);
-// ·µ»ØÁ´±íµÄµÚÒ»¸öÔªËØµÄÎ»ÖÃ
+// è¿”å›é“¾è¡¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ çš„ä½ç½®
 extern Position GetFirst(const List L);
-// ÅĞ¶Ï¸ÃÑ­»·Á´±íÊÇ·ñÖ»ÓĞÒ»¸ö½Úµã
+// è¿”å›å¾ªç¯é“¾è¡¨ä¸­æœ€åä¸€ä¸ªèŠ‚ç‚¹çš„ä½ç½®
+extern Position GetLast(const List L);
+// åˆ¤æ–­è¯¥å¾ªç¯é“¾è¡¨æ˜¯å¦åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹
 extern int HasOnlyOne(const List L);
-// ½«Á´±íÖÃ¿Õ
+// å°†é“¾è¡¨ç½®ç©º
 extern List MakeEmpty(List L);
-// ·µ»ØÒ»¸ö±»²éÕÒÔªËØÔÚ±íÖĞµÚÒ»´Î³öÏÖµÄÎ»ÖÃ
+// è¿”å›ä¸€ä¸ªè¢«æŸ¥æ‰¾å…ƒç´ åœ¨è¡¨ä¸­ç¬¬ä¸€æ¬¡å‡ºç°çš„ä½ç½®
 extern Position Find(const List L, int element);
-// ¶ÔÁ´±í½øĞĞÉ¾³ı²Ù×÷
+// å¯¹é“¾è¡¨è¿›è¡Œåˆ é™¤æ“ä½œ
 extern void Delete(List L, int element);
-// Ñ°ÕÒÖ¸¶¨Êı¾İµÄÉÏÒ»¸ö½Úµã
+// å¯»æ‰¾æŒ‡å®šæ•°æ®çš„ä¸Šä¸€ä¸ªèŠ‚ç‚¹
 extern Position FindPrevious(const List L, int element);
-// ¶ÔÁ´±í½øĞĞ²åÈë²Ù×÷
+// å¯¹é“¾è¡¨è¿›è¡Œæ’å…¥æ“ä½œ
 extern void Insert(List L, Position P, int element);
-// É¾³ıÒ»¸öÁ´±í
+// åˆ é™¤ä¸€ä¸ªé“¾è¡¨
 extern void DeleteList(List L);
-// ·µ»ØÒ»¸ö½ÚµãµÄÏÂÒ»¸ö½Úµã
+// è¿”å›ä¸€ä¸ªèŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
 extern Position Advance(const Position P);
-// È¡µÃPÎ»ÖÃ´¦µÄÔªËØ
+// å–å¾—Pä½ç½®å¤„çš„å…ƒç´ 
 extern int Retrieve(const Position P);
+// éå†æ‰“å°å¾ªç¯é“¾è¡¨
+extern void TraversePrint(const List L);
 
 
 #endif  /* circuCursorList__h */
