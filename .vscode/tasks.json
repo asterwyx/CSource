@@ -1,0 +1,107 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        // windows自带控制台的build task，输出文件编码为GBK
+        {
+            "label": "gcc build (GBK out)",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "windows":{
+                "command": "gcc",
+                "args": [
+                    "-ggdb",
+                    "${file}",
+                    "-o",
+                    "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
+                    "-finput-charset=UTF-8",  //输入编译器文本编码 默认为UTF-8
+                    "-fexec-charset=GBK"  //编译器输出文本编码，这里如果在Windows下使用外置控制台，最好选择GBK编码，这样不会乱码
+                ]
+            }
+        },
+        // UTF-8格式输出文件的build task，支持windows和linux双平台
+        {
+            "label": "gcc build (UTF-8 out)",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "windows":{
+                "command": "gcc",
+                "args": [
+                    "-ggdb",
+                    "${file}",
+                    "-o",
+                    "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
+                    "-finput-charset=UTF-8",
+                    "-fexec-charset=UTF-8"
+                ]
+            },
+            "linux":{
+                "command": "gcc",
+                "args": [
+                    "-ggdb",
+                    "${file}",
+                    "-o",
+                    "${workspaceFolder}/out/${fileBasenameNoExtension}.out",
+                    "-finput-charset=UTF-8",
+                    "-fexec-charset=UTF-8"
+                ]
+            }
+        },
+        // 同文件夹下的UTF-8产出
+        {
+            "label": "gcc build (UTF-8 out,same folder)",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "windows":{
+                "command": "gcc",
+                "args": [
+                    "-ggdb",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}.exe",  // 同文件夹下产出
+                    "-finput-charset=UTF-8",
+                    "-fexec-charset=UTF-8"
+                ]
+            },
+            "linux":{
+                "command": "gcc",
+                "args": [
+                    "-ggdb",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}.out",
+                    "-finput-charset=UTF-8",
+                    "-fexec-charset=UTF-8"
+                ]
+            }
+        }
+    ]
+}
