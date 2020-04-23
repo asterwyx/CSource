@@ -20,7 +20,7 @@ int power(int x, int n){
     if (0 == n) {
         return 1;
     }
-    int tmp = power(x, n / 2)
+    int tmp = power(x, n / 2);
     if (n % 2 == 1) {
         return tmp * tmp * x; // 这里两次调用递归是不恰当的，依然会有很多的重复计算
     }
