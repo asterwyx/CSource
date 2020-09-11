@@ -102,6 +102,30 @@
                     "-fexec-charset=UTF-8"
                 ]
             }
+        },
+        {
+            "label": "g++ build (GBK out)",
+            "type": "shell",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "windows":{
+                "command": "g++",
+                "args": [
+                    "-ggdb",
+                    "${file}",
+                    "-o",
+                    "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
+                    "-finput-charset=UTF-8",  //输入编译器文本编码 默认为UTF-8
+                    "-fexec-charset=GBK"  //编译器输出文本编码，这里如果在Windows下使用外置控制台，最好选择GBK编码，这样不会乱码
+                ]
+            }
         }
     ]
 }

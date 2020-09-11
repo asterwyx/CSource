@@ -17,6 +17,7 @@
         "math.h": "c",
         "corecrt_math.h": "c",
         "cmath": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "iosfwd": "cpp"
     },
 }
