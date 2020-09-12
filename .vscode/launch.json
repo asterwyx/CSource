@@ -10,14 +10,20 @@
             "preLaunchTask": "g++ build (GBK out)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",  // 这里是一个输出文件夹out，这个文件夹要手动创建
+            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:/Environment/mingw-8.1.0/bin/gdb.exe",
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:/Environment/mingw-8.1.0/bin/gdb.exe"
+            },
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
@@ -32,14 +38,20 @@
             "preLaunchTask": "gcc build (GBK out)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",  // 这里是一个输出文件夹out，这个文件夹要手动创建
+            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:/Environment/mingw-8.1.0/bin/gdb.exe",
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:/Environment/mingw-8.1.0/bin/gdb.exe"
+            },
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
@@ -54,14 +66,20 @@
             "preLaunchTask": "gcc build (UTF-8 out)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",  // 这里是一个输出文件夹out，这个文件夹要手动创建
+            "program": "${workspaceFolder}/out/${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
-            "MIMode": "gdb",
-            "miDebuggerPath": "C:/Environment/mingw-8.1.0/bin/gdb.exe",
+            "linux": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "/usr/bin/gdb"
+            },
+            "windows": {
+                "MIMode": "gdb",
+                "miDebuggerPath": "C:/Environment/mingw-8.1.0/bin/gdb.exe"
+            },
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
@@ -70,6 +88,5 @@
                 }
             ]
         }
-
     ]
 }
