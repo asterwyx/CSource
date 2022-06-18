@@ -14,10 +14,15 @@
     "files.autoGuessEncoding": true,
     "explorer.confirmDragAndDrop": false,
     "files.associations": {
+        "makefile-mac": "makefile",
+        "makefile_mac": "makefile",
+        "makefile_cusim": "makefile",
         "math.h": "c",
         "corecrt_math.h": "c",
         "cmath": "c",
         "stdlib.h": "c",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "list": "cpp",
+        "sstream": "cpp"
     },
 }
